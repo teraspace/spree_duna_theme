@@ -1,0 +1,1 @@
+# spree_duna_base_theme
