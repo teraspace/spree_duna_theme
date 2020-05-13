@@ -1,0 +1,14 @@
+//
+// Visibility utilities
+//
+@mixin invisible($visibility) {
+  visibility: $visibility !important;
+}
+
+.visible {
+  @include invisible(visible);
+}
+
+.invisible {
+  @include invisible(hidden);
+}

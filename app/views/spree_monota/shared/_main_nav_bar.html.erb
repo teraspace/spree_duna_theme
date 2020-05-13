@@ -1,0 +1,60 @@
+<% if spree_navigation_data.any? %>
+<div class="main-menu-w">
+  <nav class="navbar-default">
+    <div class=" container-megamenu   horizontal ">
+      <div class="megamenu-wrapper">
+        <div class="megamenu-pattern">
+          <ul class="megamenu">
+              <% spree_navigation_data.each do |root| %>
+                <li class="item-n item-style1 with-sub-menu hover">
+                  <%= link_to root[:title], root[:url], class: "clearfix" %>
+                  <% if root[:items].present? || root[:promo_banners].present? %>
+                    <div class="sub-menu" style="width: 300px;">
+                      <div class="content">
+                        <% if root[:items].present? %>
+                          <div class="row">
+                            <div class="category-links">
+                              <% if root[:subtitle].present? %>
+                                <div class="category-links-header text-uppercase">
+                                  <%= root[:subtitle] %>
+                                </div>
+                              <% end %>
+                              <ul class="pl-0">
+                                <% root[:items].each do |item| %>
+                                  <li>
+                                    <%= link_to item[:title], item[:url], class: "text-uppercase main-nav-bar-category-links" %>
+                                  </li>
+                                <% end %>
+                              </ul>
+                            </div>
+                          <% end %>
+                          <% if root[:promo_banners].present? %>
+                            <% root[:promo_banners].each do |promo_banner| %>
+                              <%= link_to promo_banner[:url] do %>
+                                <div class="category-image text-center mx-3">
+                                  <%= main_nav_image(promo_banner[:image], promo_banner[:title]) %>
+                                  <div class="category-box">
+                                    <div class="category-box-small-text">
+                                      <%= promo_banner[:subtitle] %>
+                                    </div>
+                                    <div class="category-box-big-text">
+                                      <%= promo_banner[:title] %>
+                                    </div>
+                                  </div>
+                                </div>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  <%end %>
+                </li>
+              <% end %>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </nav>
+  </div>
+<% end %>
