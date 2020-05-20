@@ -45,15 +45,7 @@ if you want render DunaBaseTheme personally I recommend try to rename or delete 
 
 5. Run `rake assets:precompile --trace` . This will try to compile the aassts and will throw a exception if something go wrong.
 
-6. This Gem has three views tries:
-    1. app/views/spree Stroyka implementation
-    2. app/views/spree_orig (original spree views bundled ready to be modified).
-    3. app/viwes/spree_monota: test to try migrate original template "Monota layout-9".
-    4. app/views/spree_bigshot3: Here I was trying to migrate "BigShot" theme from "Spree Theme Extension".
- - Only you need rename to /app/views/spree to render the version desired. Or try to develop your own theme. 
-
-
-4. Restart your server
+6. Restart your server
 
   If your server was running, restart it so that it can find the assets properly.
 
