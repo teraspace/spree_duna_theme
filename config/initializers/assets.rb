@@ -13,6 +13,6 @@ Rails.application.config.assets.precompile += %w(   application.css
                                                     icon-cart.png 
                                                     icon-user.png
                                                     logo.svg
-                                                                                  
+                                                    *.jpg                                   
                                                 )
 

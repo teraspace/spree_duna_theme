@@ -7,7 +7,7 @@
                 <div class="mobile-header__body">
                     <button class="mobile-header__menu-button">
                         <svg width="18px" height="14px">
-                            <use xlink:href="assets/sprite.svg#menu-18x14"></use>
+                            <use xlink:href=<%= asset_url("sprite.svg#menu-18x14") %> ></use>
                         </svg>
                     </button>
                     <% path = spree.respond_to?(:root_path) ? spree.root_path : main_app.root_path  %>
@@ -27,7 +27,7 @@
                             <button class="indicator__button">
                                 <span class="indicator__area">
                                     <svg width="20px" height="20px">
-                                        <use xlink:href="assets/sprite.svg#search-20"></use>
+                                        <use xlink:href=<%= asset_url("sprite.svg#search-20") %> ></use>
                                     </svg>
                                 </span>
                             </button>
@@ -36,7 +36,7 @@
                             <a href="wishlist.html" class="indicator__button">
                                 <span class="indicator__area">
                                     <svg width="20px" height="20px">
-                                        <use xlink:href="assets/sprite.svg#heart-20"></use>
+                                        <use xlink:href=<%= asset_url("sprite.svg#heart-20") %> ></use>
                                     </svg>
                                     <span class="indicator__value">0</span>
                                 </span>
@@ -46,7 +46,7 @@
                             <a href="cart.html" class="indicator__button">
                                 <span class="indicator__area">
                                     <svg width="20px" height="20px">
-                                        <use xlink:href="assets/sprite.svg#cart-20"></use>
+                                        <use xlink:href=<%= asset_url("sprite.svg#cart-20") %> ></use>
                                     </svg>
                                     <span class="indicator__value">3</span>
                                 </span>
@@ -87,7 +87,7 @@
                             <button class="topbar-dropdown__btn" type="button">
                                 My Account
                                 <svg width="7px" height="5px">
-                                    <use xlink:href="assets/sprite.svg#arrow-rounded-down-7x5"></use>
+                                    <use xlink:href=<%= asset_url("sprite.svg#arrow-rounded-down-7x5") %> ></use>
                                 </svg>
                             </button>
                             <div class="topbar-dropdown__body">
@@ -129,7 +129,7 @@
                             <button class="topbar-dropdown__btn" type="button">
                                 Currency: <span class="topbar__item-value">USD</span>
                                 <svg width="7px" height="5px">
-                                    <use xlink:href="assets/sprite.svg#arrow-rounded-down-7x5"></use>
+                                    <use xlink:href=<%= asset_url("sprite.svg#arrow-rounded-down-7x5") %> ></use>
                                 </svg>
                             </button>
                             <div class="topbar-dropdown__body">
@@ -176,7 +176,7 @@
                             <button class="topbar-dropdown__btn" type="button">
                                 Language: <span class="topbar__item-value">EN</span>
                                 <svg width="7px" height="5px">
-                                    <use xlink:href="assets/sprite.svg#arrow-rounded-down-7x5"></use>
+                                    <use xlink:href=<%= asset_url("sprite.svg#arrow-rounded-down-7x5") %> ></use>
                                 </svg>
                             </button>
                             <div class="topbar-dropdown__body">
