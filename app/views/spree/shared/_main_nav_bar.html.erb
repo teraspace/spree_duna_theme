@@ -4,175 +4,39 @@
         <div class="nav-panel__container container">
             <div class="nav-panel__row">
                 <div class="nav-panel__departments">
-                    <!-- .departments -->
-                    <div class="departments  departments--open departments--fixed " data-departments-fixed-by=".block-slideshow">
-                        <div class="departments__body">
-                            <div class="departments__links-wrapper">
-                                <div class="departments__submenus-container"></div>
-                                <ul class="departments__links">
-                                      <% spree_navigation_data.each do |root| %>       
-                                        <li class="departments__item">  
-                                            <% 
-                                                html_item = root[:title]
-                                                if root[:items].present?
-                                                    html_item = (root[:title] + '<svg class="departments__item-arrow" width="6px" height="9px">
-                                                    <use xlink:href=' + asset_url("sprite.svg#arrow-rounded-right-6x9") +'></use>
-
-                                                    </svg>').html_safe 
-                                                end                                                    
-                                                %>
-                                              <%= link_to html_item, root[:url], class: "departments__item-link" %> 
-                                            <% if root[:items].present? %> 
-                                                <div class="departments__submenu departments__submenu--type--megamenu departments__submenu--size--xl">
-                                                <!-- .megamenu -->
-                                                    <div class="megamenu  megamenu--departments ">
-                                                   <!-- <%= root[:promo_banners][0] %> -->
-                                                        <div aaa class="megamenu__body" style="background-image: url('assets/megamenu/megamenu-1.jpg');">
-                                                            <div class="row">
-                                                                <% root[:items].each do |item| %>
-                                                                    <div class="col-3">
-                                                                        <ul class="megamenu__links megamenu__links--level--0">
-                                                                            <li class="megamenu__item  megamenu__item--with-submenu ">
-                                                                          
-                                                                                <%= link_to item[:title], item[:url] %> 
-                                                                              <!--    <ul class="megamenu__links megamenu__links--level--1">
-                                                                                    <li class="megamenu__item"><a href="">Engravers</a></li>
-                                                                                    <li class="megamenu__item"><a href="">Drills</a></li>
-                                                                                    <li class="megamenu__item"><a href="">Wrenches</a></li>
-                                                                                    <li class="megamenu__item"><a href="">Plumbing</a></li>
-                                                                                    <li class="megamenu__item"><a href="">Wall Chaser</a></li>
-                                                                                    <li class="megamenu__item"><a href="">Pneumatic Tools</a></li>
-                                                                                    <li class="megamenu__item"><a href="">Milling Cutters</a></li>
-                                                                                </ul>-->
-                                                                            </li>
-                                                                            <!-- <li class="megamenu__item ">
-                                                                                <a href="">Workbenches</a>
-                                                                            </li>
-                                                                            <li class="megamenu__item ">
-                                                                                <a href="">Presses</a>
-                                                                            </li>
-                                                                            <li class="megamenu__item ">
-                                                                                <a href="">Spray Guns</a>
-                                                                            </li>
-                                                                            <li class="megamenu__item ">
-                                                                                <a href="">Riveters</a>
-                                                                            </li>-->
-                                                                        </ul>
-                                                                    </div>
-                                                                <% end %>   
-
-                                                                  <!-- <div class="col-3">
-                                                                    <ul class="megamenu__links megamenu__links--level--0">
-                                                                        <li class="megamenu__item  megamenu__item--with-submenu ">
-                                                                            <a href="">Hand Tools</a>
-                                                                            <ul class="megamenu__links megamenu__links--level--1">
-                                                                                <li class="megamenu__item"><a href="">Screwdrivers</a></li>
-                                                                                <li class="megamenu__item"><a href="">Handsaws</a></li>
-                                                                                <li class="megamenu__item"><a href="">Knives</a></li>
-                                                                                <li class="megamenu__item"><a href="">Axes</a></li>
-                                                                                <li class="megamenu__item"><a href="">Multitools</a></li>
-                                                                                <li class="megamenu__item"><a href="">Paint Tools</a></li>
-                                                                            </ul>
-                                                                        </li>
-                                                                        <li class="megamenu__item  megamenu__item--with-submenu ">
-                                                                            <a href="">Garden Equipment</a>
-                                                                            <ul class="megamenu__links megamenu__links--level--1">
-                                                                                <li class="megamenu__item"><a href="">Motor Pumps</a></li>
-                                                                                <li class="megamenu__item"><a href="">Chainsaws</a></li>
-                                                                                <li class="megamenu__item"><a href="">Electric Saws</a></li>
-                                                                                <li class="megamenu__item"><a href="">Brush Cutters</a></li>
-                                                                            </ul>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col-3">
-                                                                    <ul class="megamenu__links megamenu__links--level--0">
-                                                                        <li class="megamenu__item  megamenu__item--with-submenu ">
-                                                                            <a href="">Machine Tools</a>
-                                                                            <ul class="megamenu__links megamenu__links--level--1">
-                                                                                <li class="megamenu__item"><a href="">Thread Cutting</a></li>
-                                                                                <li class="megamenu__item"><a href="">Chip Blowers</a></li>
-                                                                                <li class="megamenu__item"><a href="">Sharpening Machines</a></li>
-                                                                                <li class="megamenu__item"><a href="">Pipe Cutters</a></li>
-                                                                                <li class="megamenu__item"><a href="">Slotting machines</a></li>
-                                                                                <li class="megamenu__item"><a href="">Lathes</a></li>
-                                                                            </ul>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col-3">
-                                                                    <ul class="megamenu__links megamenu__links--level--0">
-                                                                        <li class="megamenu__item  megamenu__item--with-submenu ">
-                                                                            <a href="">Instruments</a>
-                                                                            <ul class="megamenu__links megamenu__links--level--1">
-                                                                                <li class="megamenu__item"><a href="">Welding Equipment</a></li>
-                                                                                <li class="megamenu__item"><a href="">Power Tools</a></li>
-                                                                                <li class="megamenu__item"><a href="">Hand Tools</a></li>
-                                                                                <li class="megamenu__item"><a href="">Measuring Tool</a></li>
-                                                                            </ul>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div> -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--  .megamenu / end -->
-                                                </div>
-                                            <% end %>                                                                          
-                                        </li>
-                                      <% end %>
-                                </ul>
-                            </div>
+                    <% if  @@header_layout != 'default' %>
+                        <div class="nav-panel__logo">
+                            <% path = spree.respond_to?(:root_path) ? spree.root_path : main_app.root_path%>
+                            <%=link_to path, 'aria-label': current_store.name, class: 'logo' do
+                                        image_tag(Spree::Config[:logo], height: '45', class: 'logo')
+                                end
+                            %>
                         </div>
-                        <button class="departments__button">
-                            <svg class="departments__button-icon" width="18px" height="14px">
-                                 <use xlink:href=<%= asset_url("sprite.svg#menu-18x14") %> ></use>
-                            </svg>
-                            Shop By Category
-                            <svg class="departments__button-arrow" width="9px" height="6px">
-                                 <use xlink:href=<%= asset_url("sprite.svg#arrow-rounded-down-9x6") %> ></use>
-                            </svg>
-                        </button>
-                    </div>
+                    <% end %>
+                    <!-- .departments -->
+                    <% if  @@header_layout== 'default' %>
+                        <%= render 'spree/shared/departments' %>
+                    <% end %>
                     <!-- .departments / end -->
                 </div>
                 <!-- .nav-links   -->
-                <div class="nav-panel__nav-links nav-links">
-                    <ul class="nav-links__list">
-                        <% spree_navigation_data.each do |root| %>   
-                            <li class="nav-links__item  nav-links__item--has-submenu ">
-                                <a class="nav-links__item-link" href="index.html">
-                                    <div class="nav-links__item-body">
-                                        <%= root[:title] %>
-                                        <svg class="nav-links__item-arrow" width="9px" height="6px">
-                                            <use xlink:href=<%= asset_url("sprite.svg#arrow-rounded-down-9x6") %> ></use>
-                                        </svg>
-                                    </div>
-                                </a>
-                                  <% if root[:items].present? %>                                    
-                                        <div class="nav-links__submenu nav-links__submenu--type--menu">
-                                            <!-- .menu -->
-                                            <div class="menu menu--layout--classic ">
-                                                <div class="menu__submenus-container"></div>
-                                                <ul class="menu__list">
-                                                <% root[:items].each do |item| %>   
-                                                    <li class="menu__item">
-                                                        <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                                                        <div class="menu__item-submenu-offset"></div>
-                                                        <%= link_to item[:title], item[:url], class: 'menu__item-link' %> 
-                                                    </li>
-                                                <% end %>
-                                                </ul>
-                                            </div>
-                                            <!-- .menu / end -->
-                                        </div>                                 
-                                <% end %>
-                            </li>
-                        <% end %>
-                    </ul>
-                </div>
+                <%= render 'spree/shared/nav_links' %>
                 <!-- .nav-links / end -->
                 <div class="nav-panel__indicators">
+                    <% if  @@header_layout != 'default' %>
+                        <div class="indicator indicator--trigger--click">
+                            <button type="button" class="indicator__button">
+                                <span class="indicator__area">
+                                    <svg class="indicator__icon" width="20px" height="20px"><use xlink:href=<%= asset_url("sprite.svg#search-20") %>></use></svg>
+                                    <svg class="indicator__icon indicator__icon--open" width="20px" height="20px"><use xlink:href=<%= asset_url("sprite.svg#cross-20") %>></use></svg>
+                                </span>
+                            </button>
+
+                            <div class="indicator__dropdown">
+                                 <%= render 'spree/shared/search_compact' %>
+                            </div>
+                        </div>
+                    <% end %>               
                     <div class="indicator">
                         <a href="wishlist.html" class="indicator__button">
                             <span class="indicator__area">
@@ -184,14 +48,15 @@
                         </a>
                     </div>
                     <div class="indicator indicator--trigger--click">
-                        <a href="cart.html" class="indicator__button">
+                        <%= link_to spree.cart_path, class: "indicator__button"  do %>
                             <span class="indicator__area">
                                 <svg width="20px" height="20px">
                                     <use xlink:href=<%= asset_url("sprite.svg#cart-20") %> ></use>
                                 </svg>
                                 <span class="indicator__value">3</span>
                             </span>
-                        </a>
+                        <% end %>
+     
                         <div class="indicator__dropdown">
                             <!-- .dropcart -->
                             <div class="dropcart dropcart--style--dropdown">
@@ -200,7 +65,7 @@
                                         <div class="dropcart__product">
                                             <div class="product-image dropcart__product-image">
                                                 <a href="product.html" class="product-image__body">
-                                                    <img class="product-image__img" src="assets/products/product-1.jpg" alt="">
+                                                    <img class="product-image__img" src=<%= asset_url('products/product-1.jpg') %> alt="">
                                                 </a>
                                             </div>
                                             <div class="dropcart__product-info">
@@ -223,7 +88,7 @@
                                         <div class="dropcart__product">
                                             <div class="product-image dropcart__product-image">
                                                 <a href="product.html" class="product-image__body">
-                                                    <img class="product-image__img" src="assets/products/product-2.jpg" alt="">
+                                                    <img class="product-image__img" src=<%= asset_url('products/product-2.jpg') %> alt="">
                                                 </a>
                                             </div>
                                             <div class="dropcart__product-info">
@@ -242,7 +107,7 @@
                                         <div class="dropcart__product">
                                             <div class="product-image dropcart__product-image">
                                                 <a href="product.html" class="product-image__body">
-                                                    <img class="product-image__img" src="assets/products/product-5.jpg" alt="">
+                                                    <img class="product-image__img" src=<%= asset_url('products/product-5.jpg') %> alt="">
                                                 </a>
                                             </div>
                                             <div class="dropcart__product-info">
@@ -292,55 +157,68 @@
                         </div>
                     </div>
                     <div class="indicator indicator--trigger--click">
-                        <a href="account-login.html" class="indicator__button">
+                        <%= link_to spree_login_path, class: "indicator__button"  do %>
                             <span class="indicator__area">
                                 <svg width="20px" height="20px">
                                     <use xlink:href=<%= asset_url("sprite.svg#person-20") %> ></use>
                                 </svg>
                             </span>
-                        </a>
+                        <% end %>
+    
                         <div class="indicator__dropdown">
                             <div class="account-menu">
-                                <form class="account-menu__form">
-                                    <div class="account-menu__form-title">Log In to Your Account</div>
-                                    <div class="form-group">
-                                        <label for="header-signin-email" class="sr-only">Email address</label>
-                                        <input id="header-signin-email" type="email" class="form-control form-control-sm" placeholder="Email address">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="header-signin-password" class="sr-only">Password</label>
-                                        <div class="account-menu__form-forgot">
-                                            <input id="header-signin-password" type="password" class="form-control form-control-sm" placeholder="Password">
-                                            <a href="" class="account-menu__form-forgot-link">Forgot?</a>
+                             <% if !try_spree_current_user %>
+                                    <%= form_for Spree.user_class.new, as: :spree_user, url: spree_login_path, html: {class: "account-menu__form"} do |f| %>
+                                
+                                        <div class="account-menu__form-title"><%= Spree.t(:log_in_to_continue) %></div>
+                                        <div class="form-group">
+                                            <label for="header-signin-email" class="sr-only"><%= Spree.t(:email) %></label>
+                                            <%= f.email_field :email, class: 'form-control form-control-sm', placeholder: Spree.t(:email), autofocus: true, id: "header-signin-email" %>                                       
                                         </div>
-                                    </div>
-                                    <div class="form-group account-menu__form-button">
-                                        <button type="submit" class="btn btn-primary btn-sm">Login</button>
-                                    </div>
-                                    <div class="account-menu__form-link"><a href="account-login.html">Create An Account</a></div>
-                                </form>
-                                <div class="account-menu__divider"></div>
-                                <a href="account-dashboard.html" class="account-menu__user">
-                                    <div class="account-menu__user-avatar">
-                                        <img src="assets/avatars/avatar-3.jpg" alt="">
-                                    </div>
-                                    <div class="account-menu__user-info">
-                                        <div class="account-menu__user-name">Helena Garcia</div>
-                                        <div class="account-menu__user-email">stroyka@example.com</div>
-                                    </div>
-                                </a>
-                                <div class="account-menu__divider"></div>
-                                <ul class="account-menu__links">
-                                    <li><a href="account-profile.html">Edit Profile</a></li>
-                                    <li><a href="account-orders.html">Order History</a></li>
-                                    <li><a href="account-addresses.html">Addresses</a></li>
-                                    <li><a href="account-password.html">Password</a></li>
-                                </ul>
-                                <div class="account-menu__divider"></div>
-                                <ul class="account-menu__links">
-                                    <li><a href="account-login.html">Logout</a></li>
-                                </ul>
-                            </div>
+                                        <div class="form-group">
+                                            <label for="header-signin-password" class="sr-only"><%= Spree.t(:password) %></label>
+                                            <div class="account-menu__form-forgot">
+                                                <%= f.password_field :password, class: 'form-control form-control-sm', placeholder: Spree.t(:password), autofocus: true, id: "header-signin-password" %>
+                                                <%= link_to Spree.t(:forgot_password), nil, class: "account-menu__form-forgot-link" %>
+                                            </div>
+                                        </div>
+                                        <div class="form-group account-menu__form-button">
+                                            <%= f.submit Spree.t(:log_in), class: 'btn btn-primary btn-sm' %>
+                                        </div>
+                                        <div class="account-menu__form-link">
+                                            <%= link_to Spree.t('nav_bar.sign_up'), spree_signup_path if defined?(spree_signup_path) %>                                    
+                                        </div>
+                                    <% end %>
+                                <% else %>
+                                    <div class="account-menu__divider"></div>
+                                    <a href="account-dashboard.html" class="account-menu__user">
+                                        <div class="account-menu__user-avatar">
+                                            <img src=<%= asset_url('avatars/avatar-3.jpg') %> alt="">
+                                        </div>
+                                        <div class="account-menu__user-info">
+                                            <div class="account-menu__user-name"><%= try_spree_current_user.login if try_spree_current_user  %></div>
+                                            <div class="account-menu__user-email"><%= try_spree_current_user.email if try_spree_current_user %></div>
+                                        </div>
+                                    </a>
+                                    <div class="account-menu__divider"></div>
+                                    <ul class="account-menu__links">
+                                        <li>
+                                            <% link_to  spree.edit_user_path(try_spree_current_user) do %>
+                                                <%= inline_svg_tag 'edit.svg', class: "account-page-user-info-item-title-edit-img" %>
+                                            <% end %>
+                                        </li>
+                                        <li><a href="account-orders.html"><%= link_to Spree.t(:cart), spree.cart_path  %></a></li>
+                                        <li><a href="account-addresses.html"><%= try_spree_current_user.bill_address.first if try_spree_current_user.bill_address.present? %></a></li>
+                                        <li><a href="account-password.html">Password</a></li>
+                                    </ul>
+                                    <div class="account-menu__divider"></div>
+                                    <ul class="account-menu__links">
+                                        <li>
+                                            <%= link_to Spree.t('nav_bar.log_out'), spree_logout_path, method: :get if defined?(spree_logout_path) %>                                                                            
+                                        </li>
+                                    </ul>
+                                </div>
+                             <% end %>
                         </div>
                     </div>
                 </div>

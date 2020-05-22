@@ -12,4 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= stub 'css/blue.css'
+ *= stub 'css/red.css'
+ *= stub 'css/black.css'
+ *= stub 'css/yellow.css' 
  */

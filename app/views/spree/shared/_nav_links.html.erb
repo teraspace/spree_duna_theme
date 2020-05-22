@@ -1,0 +1,34 @@
+<div class="nav-panel__nav-links nav-links">
+    <ul class="nav-links__list">
+        <% spree_navigation_data.each do |root| %>   
+            <li class="nav-links__item  nav-links__item--has-submenu ">
+                <a class="nav-links__item-link" href="index.html">
+                    <div class="nav-links__item-body">
+                        <%= root[:title] %>
+                        <svg class="nav-links__item-arrow" width="9px" height="6px">
+                            <use xlink:href=<%= asset_url("sprite.svg#arrow-rounded-down-9x6") %> ></use>
+                        </svg>
+                    </div>
+                </a>
+                    <% if root[:items].present? %>                                    
+                        <div class="nav-links__submenu nav-links__submenu--type--menu">
+                            <!-- .menu -->
+                            <div class="menu menu--layout--classic ">
+                                <div class="menu__submenus-container"></div>
+                                <ul class="menu__list">
+                                <% root[:items].each do |item| %>   
+                                    <li class="menu__item">
+                                        <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
+                                        <div class="menu__item-submenu-offset"></div>
+                                        <%= link_to item[:title], item[:url], class: 'menu__item-link' %> 
+                                    </li>
+                                <% end %>
+                                </ul>
+                            </div>
+                            <!-- .menu / end -->
+                        </div>                                 
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
+</div>

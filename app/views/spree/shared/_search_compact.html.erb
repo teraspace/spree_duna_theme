@@ -1,0 +1,71 @@
+<%#
+    # inputs:
+    # - location: string - Location where the search will be used, for exmaple: header.
+    # - classes:  string - CSS classes.
+    #
+%>
+<% @classes = 'mobile-header__search' %>
+<% @location = 'indicator' %>
+<% @categories = [
+    {depth: 0, name: 'Instruments'},
+    {depth: 1, name: 'Power Tools'},
+    {depth: 1, name: 'Hand Tools'},
+    {depth: 1, name: 'Machine Tools'},
+    {depth: 1, name: 'Power Machinery'},
+    {depth: 1, name: 'Measurement'},
+    {depth: 1, name: 'Clothes and PPE'},
+    {depth: 0, name: 'Electronics'},
+    {depth: 0, name: 'Computers'},
+    {depth: 0, name: 'Automotive'},
+    {depth: 0, name: 'Furniture & Appliances'},
+    {depth: 0, name: 'Music & Books'},
+    {depth: 0, name: 'Health & Beauty'},
+] %>
+
+<div class="search search--location--<%=@location %> <%=@classes %>">
+    <div class="search__body">
+        <%= form_tag spree.products_path, method: :get, class: "search__form" do %>
+            <% if @location == 'header' %>
+                <select class="search__categories" aria-label="Category">
+                    <option value="all">All Categories</option>
+                    <% spree_navigation_data.each do |root| %>   
+                        <option><%= root[:title] %></option>
+                        <% if root[:items].present? %>
+                            <% root[:items].each do |item| %>   
+                                <option>&nbsp;&nbsp;&nbsp;&nbsp; <%= item[:title] %> </option>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </select>
+            <% end %>
+        <%= search_field_tag :keywords,
+            params[:keywords],
+            placeholder: Spree.t(:search),
+            autofocus: true,
+            class: "search__input"
+    %>            
+            <button class="search__button search__button--type--submit" type="submit">
+                    <svg width="20px" height="20px">
+                        <use xlink:href=<%= asset_url("sprite.svg#search-20") %> ></use>
+                    </svg>  
+                    <span class="fake-svg-icon fake-svg-icon--search-20"></span>
+            </button>
+            <% if @location == 'mobile-header' %>
+                <button class="search__button search__button--type--close" type="button">
+                    <svg width="20px" height="20px">
+                        <use xlink:href=<%= asset_url("sprite.svg#cross-20") %> ></use>
+                    </svg>         
+                    <span class="fake-svg-icon fake-svg-icon--cross-20"></span>     
+                </button>
+            <% end %>
+            <div class="search__border"></div>
+        <% end %>
+
+        <div class="search__suggestions suggestions suggestions--location--<%=@location %> "></div>
+    </div>
+</div>
+
+
+
+
+

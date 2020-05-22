@@ -1,7 +1,11 @@
 
 Rails.application.config.assets.unknown_asset_fallback = false
 Rails.application.config.assets.precompile += %w(   application.css 
-                                                    vendor.css                                 
+                                                    yellow.css 
+                                                    red.css    
+                                                    blue.css
+                                                    black.css
+                                                    green.css                            
                                                     logo.png  
                                                     icon-search.png 
                                                     application.js 
@@ -13,6 +17,7 @@ Rails.application.config.assets.precompile += %w(   application.css
                                                     icon-cart.png 
                                                     icon-user.png
                                                     logo.svg
-                                                    *.jpg                                   
+                                                    *.jpg   
+                                                    *.png                                
                                                 )
 

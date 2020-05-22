@@ -1,12 +1,13 @@
 <title><%= title %></title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="format-detection" content="telephone=no">
+<meta name="turbolinks-visit-control" content="reload">
 <%== meta_image_data_tag %>
 <%== meta_data_tags %>
 <%= canonical_tag(current_store.url) %>
 <%= favicon_link_tag 'favicon.ico' %>
 <!--<%= stylesheet_link_tag 'application', media: 'screen', 'data-turbolinks-track': 'reload' %>-->
-<%= stylesheet_link_tag 'vendor', media: 'screen', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag 'green', media: 'screen', 'data-turbolinks-track': 'reload' %>
 <%= csrf_meta_tags %>
 <%= render 'spree/shared/paths' %>
 

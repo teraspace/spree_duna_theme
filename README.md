@@ -6,6 +6,13 @@ Homepage implementations at the momment:
     - Some carrousel without images
     - Footer nearly completed
     - Header nearly completed
+    - Colors and header layout avaible only by change bundled css in spree/shared/head partial in this gem:
+         <%= stylesheet_link_tag 'green', media: 'screen', 'data-turbolinks-track': 'reload' %>
+         Black, Blue, Yellow, Green and Red avaible.
+    - Layout setup @@header_layout global 'default' and 'compact' in your project initialitzer.
+      Compact mode only will render top menu and will get out the left handed one.
+    - Top menu Icon search, Login and Link to cart are functionals.
+    
 
     Anothers features Stroyka UX avaible but not implemented with Spree yet. :
         - Login from the home (visually inputs for logins is Spree sourced yet) but usable
@@ -15,6 +22,9 @@ Homepage implementations at the momment:
         - Languages, currencies, Taxons images
         - Banners manager (Spree natively not supported)
         - View a single product 
+        - Blocks structures in spree/shared/blocks are statics yet except block_products with some features
+        - Generator to rename/delete/move original app/views/spree .
+        - Turbolinks are not compatible with highly UX javascript stroyka functionalities and routings. Are nearly disabled but if some go wrong please comment gem 'turbolinks' in your project Gemfile
         
 ## Installation
 
@@ -36,7 +46,7 @@ Homepage implementations at the momment:
     ```ruby
     bundle exec rails g spree_duna_base_theme:install
     ```
-
+    This step is not necessary in this commit.
 
 
 4. Remember that Spree will search for views recursively, if a html.erb is found on your project will be rendered.
