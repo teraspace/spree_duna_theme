@@ -53,7 +53,7 @@
             <% if @products.present? %>
                 <div class="view-options__legend">Showing <%=  @products.count %> products</div>
                 <div class="view-options__divider"></div>
-                <div class="view-options__control">
+                <div class="view-options__control" style="display: none;">
                     <label for="">Sort By</label>
                     <div>
                         <select class="form-control form-control-sm" name="" id="">
@@ -62,7 +62,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="view-options__control">
+                <div class="view-options__control" style="display: none;">
                     <label for="">Show</label>
                     <div>
                         <select class="form-control form-control-sm" name="" id="">
