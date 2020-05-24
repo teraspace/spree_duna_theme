@@ -1,20 +1,89 @@
-<% url = spree.product_path(product, taxon_id: taxon.try(:id)) %>
-<% price = product.price_in(current_currency).amount %>
-<div id="product_<%= product.id %>" class="d-flex w-100 col-12 col-sm-6 col-lg-4 col-xl-3 product-list-item mb-4" data-hook="products_list_item">
-  <div class="card w-100">
-    <% cache(taxon.present? ? [I18n.locale, current_currency, taxon&.id, product] : cache_key_for_product(product)) do %>
-      <div class="card-body text-center product-body">
-        <%= link_to url, class: 'd-block text-center' do %>
-          <%= small_image(product, class: "d-block mx-auto") %>
-          <%= content_tag(:span, truncate(product.name, length: 50), class: 'info mt-3 d-block', title: product.name) %>
-        <% end %>
-      </div>
-      <div class="card-footer text-center">
-        <span class="price selling lead" content="<%= price.nil? 0 : price.to_d %>">
-          <%= display_price(product) %>
-        </span>
-        <span content="<%= current_currency %>"></span>
-      </div>
+<% 
+  url = spree.product_path(product, taxon_id: product.taxons.first.try(:id)) 
+  price = product.price_in(current_currency).amount
+  _classes = {
+    'grid-sm':    'product-card--layout--grid product-card--size--sm',
+    'grid-nl':    'product-card--layout--grid product-card--size--nl',
+    'grid-lg':    'product-card--layout--grid product-card--size--lg',
+    'list':       'product-card--layout--list',
+    'horizontal': 'product-card--layout--horizontal',
+  }[layout]
+%>
+
+<div class="product-card product-card--hidden-actions <%= _classes %>">
+    <button class="product-card__quickview" type="button" style="display: none;">
+        <svg width="16px" height="16px"><use xlink:href=<%= asset_url("sprite.svg#quickview-16") %>></use></svg>
+        <span class="fake-svg-icon"></span>
+    </button>
+
+    <% if !product %>
+        <div class="product-card__badges-list">
+            <% if 'sale'%>
+                <div class="product-card__badge product-card__badge--sale">Sale</div>
+            <% end %>
+            <% if 'hot'%>
+                <div class="product-card__badge product-card__badge--hot">Hot</div>
+           <% end %>
+            <% if 'new' %>
+                <div class="product-card__badge product-card__badge--new">New</div>
+            <% end %>
+        </div>
     <% end %>
-  </div>
+
+    <div class="product-card__image product-image">
+      <a href=<%= url %> class="product-image__body">                                                 
+        <%= product_image(product, class: "product-image__img") %>
+      </a>
+    </div>
+    <div class="product-card__info">
+        <div class="product-card__name">
+            <a href=<%= url %> >
+            <%= product.name %> 
+             </a>
+        </div>
+        <div class="product-card__rating">
+            <div class="product-card__rating-stars">
+                <%# {% include '/partials/rating.twig' with {
+                    rating: product.rating
+                } %} %>
+            </div>
+            <%# <div class="product-card__rating-legend">{{ (product.rating * 2.2)|round }} Reviews</div> %>
+        </div>
+        <div class="product-card__description">
+          <%= product.description %>
+        </div>
+      <!--  <ul class="product-card__features-list">
+            <li>Speed: 750 RPM</li>
+            <li>Power Source: Cordless-Electric</li>
+            <li>Battery Cell Type: Lithium</li>
+            <li>Voltage: 20 Volts</li>
+            <li>Battery Capacity: 2 Ah</li>
+        </ul> -->
+    </div>
+    <div class="product-card__actions">
+        <div class="product-card__availability">
+            Availability: <span class="text-success">In Stock</span>
+        </div>
+        <div class="product-card__prices">
+            <% if product.price %>
+                <span class="product-card__new-price"><%= product.price %>  </span>
+                <span class="product-card__old-price"><%= product.price %></span>
+            <% else %>
+                <%= product.price %>
+            <% end %>
+        </div>
+        <div class="product-card__buttons">
+            <button class="btn btn-primary product-card__addtocart" type="button"  style="display: none;">Add To Cart</button>
+            <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button"  style="display: none;">Add To Cart</button>
+            <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" style="display: none;">
+                <svg width="16px" height="16px"><use xlink:href=<%= asset_url("sprite.svg#wishlist-16") %> ></use></svg>
+                <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+            </button>
+            <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button" style="display: none;">
+                <svg width="16px" height="16px"><use xlink:href=<%= asset_url("sprite.svg#compare-16") %>></use></svg>
+                <span class="fake-svg-icon fake-svg-icon--compare-16"></span>
+            </button>
+        </div>
+    </div>
 </div>
+

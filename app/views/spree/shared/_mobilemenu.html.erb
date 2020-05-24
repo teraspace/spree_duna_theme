@@ -241,7 +241,7 @@
                                     <a href="order-success.html" class="mobile-links__item-link">Order Success</a>
                                 </div>
                             </li>
-                            <li class="mobile-links__item" data-collapse-item>
+                            <li class="mobile-links__item" data-collapse-item  style="display: none;">
                                 <div class="mobile-links__item-title">
                                     <a href="wishlist.html" class="mobile-links__item-link">Wishlist</a>
                                 </div>
@@ -287,7 +287,7 @@
                             </li>
                             <li class="mobile-links__item" data-collapse-item>
                                 <div class="mobile-links__item-title">
-                                    <a href="account-orders.html" class="mobile-links__item-link">Order History</a>
+                                    <%= link_to Spree.t(:cart), spree.cart_path, class:"mobile-links__item-link"  %>
                                 </div>
                             </li>
                             <li class="mobile-links__item" data-collapse-item>

@@ -1,10 +1,12 @@
-<div class="taxon">
-  <div class="container">
-    <%= spree_breadcrumbs(@taxon) %>
-    <%= render 'header', taxon: @taxon %>
-  </div>
-  <%= render 'subcategories', taxon: @taxon %>
+<div ss class="page-header">
+<div class="container">
+    <!-- <%= render partial: 'spree/shared/page_header', title: nil %> -->
+         <%= spree_breadcrumbs(@taxon) %>
+       <!-- <%= render 'header', taxon: @taxon %> -->
+</div>
+<div class="container">
   <div data-hook="taxon_products">
-    <%= render template: 'spree/products/index', colors: @colors, sizes: @sizes %>
+      <%= render partial: 'spree/products/product_view', colors: @colors, sizes: @sizes, products: @products %>
   </div>
+</div>
 </div>

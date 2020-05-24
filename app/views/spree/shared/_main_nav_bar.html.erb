@@ -37,7 +37,7 @@
                             </div>
                         </div>
                     <% end %>               
-                    <div class="indicator">
+                    <div class="indicator"  style="display: none;">
                         <a href="wishlist.html" class="indicator__button">
                             <span class="indicator__area">
                                 <svg width="20px" height="20px">
@@ -47,13 +47,14 @@
                             </span>
                         </a>
                     </div>
-                    <div class="indicator indicator--trigger--click">
+                    <div class="indicator ">
                         <%= link_to spree.cart_path, class: "indicator__button"  do %>
                             <span class="indicator__area">
                                 <svg width="20px" height="20px">
                                     <use xlink:href=<%= asset_url("sprite.svg#cart-20") %> ></use>
                                 </svg>
-                                <span class="indicator__value">3</span>
+                                <% item_count = simple_current_order&.item_count || 0 %>
+                                <span class="indicator__value"><%= item_count %></span>
                             </span>
                         <% end %>
      
@@ -160,7 +161,7 @@
                         <%= link_to spree_login_path, class: "indicator__button"  do %>
                             <span class="indicator__area">
                                 <svg width="20px" height="20px">
-                                    <use xlink:href=<%= asset_url("sprite.svg#person-20") %> ></use>
+                                    <use abc xlink:href=<%= asset_url("sprite.svg#person-20") %> ></use>
                                 </svg>
                             </span>
                         <% end %>
@@ -179,7 +180,7 @@
                                             <label for="header-signin-password" class="sr-only"><%= Spree.t(:password) %></label>
                                             <div class="account-menu__form-forgot">
                                                 <%= f.password_field :password, class: 'form-control form-control-sm', placeholder: Spree.t(:password), autofocus: true, id: "header-signin-password" %>
-                                                <%= link_to Spree.t(:forgot_password), nil, class: "account-menu__form-forgot-link" %>
+                                                <%= link_to Spree.t(:forgot_password), spree.recover_password_path, class: "account-menu__form-forgot-link" %>
                                             </div>
                                         </div>
                                         <div class="form-group account-menu__form-button">
@@ -191,7 +192,7 @@
                                     <% end %>
                                 <% else %>
                                     <div class="account-menu__divider"></div>
-                                    <a href="account-dashboard.html" class="account-menu__user">
+                                    <a href=<%= spree.account_path %>  class="account-menu__user">
                                         <div class="account-menu__user-avatar">
                                             <img src=<%= asset_url('avatars/avatar-3.jpg') %> alt="">
                                         </div>
@@ -207,9 +208,15 @@
                                                 <%= inline_svg_tag 'edit.svg', class: "account-page-user-info-item-title-edit-img" %>
                                             <% end %>
                                         </li>
-                                        <li><a href="account-orders.html"><%= link_to Spree.t(:cart), spree.cart_path  %></a></li>
-                                        <li><a href="account-addresses.html"><%= try_spree_current_user.bill_address.first if try_spree_current_user.bill_address.present? %></a></li>
-                                        <li><a href="account-password.html">Password</a></li>
+                                        <li><%= link_to Spree.t(:cart), spree.cart_path  %></li>
+                                        <%  if try_spree_current_user.bill_address.present? %>
+                                            <li><a href=<%= spree.account_path %> ><%= try_spree_current_user.bill_address.first if try_spree_current_user.bill_address.present? %></a></li>
+                                         <% end %>
+                                        <li>
+                                            <% link_to  spree.edit_user_path(try_spree_current_user) do %>
+                                                <%= inline_svg_tag 'edit.svg', class: "account-page-user-info-item-title-edit-img" %>
+                                            <% end %>
+                                        </li>
                                     </ul>
                                     <div class="account-menu__divider"></div>
                                     <ul class="account-menu__links">

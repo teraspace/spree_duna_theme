@@ -18,6 +18,7 @@ Rails.application.config.assets.precompile += %w(   application.css
                                                     icon-user.png
                                                     logo.svg
                                                     *.jpg   
-                                                    *.png                                
+                                                    *.png      
+                                                    *.map                          
                                                 )
 

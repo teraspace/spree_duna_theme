@@ -125,6 +125,9 @@
             nav: false,
             dots: true,
             loop: true,
+            autoplay:true,
+            autoplayTimeout:3000,
+            autoplayHoverPause:true,
             rtl: isRTL()
         });
     });
@@ -137,7 +140,7 @@
         $('.block-brands__slider .owl-carousel').owlCarousel({
             nav: false,
             dots: false,
-            loop: true,
+            loop: false,
             rtl: isRTL(),
             responsive: {
                 1200: {items: 6},
@@ -224,7 +227,7 @@
     $(function() {
         $('.teammates .owl-carousel').owlCarousel({
             nav: false,
-            dots: true,
+            dots: false,
             rtl: isRTL(),
             responsive: {
                 768: {items: 3, margin: 32},

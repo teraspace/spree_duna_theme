@@ -29,11 +29,13 @@
                           <div class="site-footer__widget footer-links">
                               <h5 class="footer-links__title"><%= link_to root[:title], root[:url] %></h5>
                               <ul class="footer-links__list">
-                                <% root[:items].each do |item| %>
-                                  <li class="footer-links__item">
-                                    <%= link_to item[:title], item[:url], class:"footer-links__link"  %> 
-                                  </li>
-                                <% end %>              
+                                <% if root[:items].present? %>
+                                    <% root[:items].each do |item| %>
+                                        <li class="footer-links__item">
+                                            <%= link_to item[:title], item[:url], class:"footer-links__link"  %> 
+                                        </li>
+                                    <% end %>   
+                                <% end %>            
                               </ul>
                           </div>
                       </div>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="<%= I18n.locale %>" dir="ltr">
     <head data-hook="inside_head">
         <%= render partial: 'spree/shared/head' %>
     </head>
 
-    <body data-turbolinks="false">
+    <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body" style="padding-top: 0px;">
         <!-- site -->
         <div class="site">
             <%= render partial: 'spree/shared/mobile_header' %>

@@ -4,115 +4,115 @@
             <div class="departments__submenus-container"></div>
             <ul class="departments__links">
                     <% spree_navigation_data.each do |root| %>       
-                    <li class="departments__item">  
-                        <% 
-                            html_item = root[:title]
-                            if root[:items].present?
-                                html_item = (root[:title] + '<svg class="departments__item-arrow" width="6px" height="9px">
-                                <use xlink:href=' + asset_url("sprite.svg#arrow-rounded-right-6x9") +'></use>
+                        <li class="departments__item">  
+                            <% 
+                                html_item = root[:title]
+                                if root[:items].present?
+                                    html_item = (root[:title] + '<svg class="departments__item-arrow" width="6px" height="9px">
+                                    <use xlink:href=' + asset_url("sprite.svg#arrow-rounded-right-6x9") +'></use>
 
-                                </svg>').html_safe 
-                            end                                                    
-                            %>
-                            <%= link_to html_item, root[:url], class: "departments__item-link" %> 
-                        <% if root[:items].present? %> 
-                            <div class="departments__submenu departments__submenu--type--megamenu departments__submenu--size--xl">
-                            <!-- .megamenu -->
-                                <div class="megamenu  megamenu--departments ">
-                                <!-- <%= root[:promo_banners][0] %> -->
-                                    <div aaa class="megamenu__body" style="background-image: url('<%= asset_url('megamenu/megamenu-1.jpg') %>');">
-                                        <div class="row">
-                                            <% root[:items].each do |item| %>
+                                    </svg>').html_safe 
+                                end                                                    
+                                %>
+                                <%= link_to html_item, root[:url], class: "departments__item-link" %> 
+                            <% if root[:items].present? %> 
+                                <div class="departments__submenu departments__submenu--type--megamenu departments__submenu--size--xl">
+                                <!-- .megamenu -->
+                                    <div class="megamenu  megamenu--departments ">
+                                    <!-- <%= root[:promo_banners][0] %> -->
+                                        <div aaa class="megamenu__body" style="background-image: url('<%= asset_url('megamenu/megamenu-1.jpg') %>');">
+                                            <div class="row">
+                                                <% root[:items].each do |item| %>
+                                                    <div class="col-3">
+                                                        <ul class="megamenu__links megamenu__links--level--0">
+                                                            <li class="megamenu__item  megamenu__item--with-submenu ">
+                                                            
+                                                                <%= link_to item[:title], item[:url] %> 
+                                                                <!--    <ul class="megamenu__links megamenu__links--level--1">
+                                                                    <li class="megamenu__item"><a href="">Engravers</a></li>
+                                                                    <li class="megamenu__item"><a href="">Drills</a></li>
+                                                                    <li class="megamenu__item"><a href="">Wrenches</a></li>
+                                                                    <li class="megamenu__item"><a href="">Plumbing</a></li>
+                                                                    <li class="megamenu__item"><a href="">Wall Chaser</a></li>
+                                                                    <li class="megamenu__item"><a href="">Pneumatic Tools</a></li>
+                                                                    <li class="megamenu__item"><a href="">Milling Cutters</a></li>
+                                                                </ul>-->
+                                                            </li>
+                                                            <!-- <li class="megamenu__item ">
+                                                                <a href="">Workbenches</a>
+                                                            </li>
+                                                            <li class="megamenu__item ">
+                                                                <a href="">Presses</a>
+                                                            </li>
+                                                            <li class="megamenu__item ">
+                                                                <a href="">Spray Guns</a>
+                                                            </li>
+                                                            <li class="megamenu__item ">
+                                                                <a href="">Riveters</a>
+                                                            </li>-->
+                                                        </ul>
+                                                    </div>
+                                                <% end %>   
+
+                                                    <!-- <div class="col-3">
+                                                    <ul class="megamenu__links megamenu__links--level--0">
+                                                        <li class="megamenu__item  megamenu__item--with-submenu ">
+                                                            <a href="">Hand Tools</a>
+                                                            <ul class="megamenu__links megamenu__links--level--1">
+                                                                <li class="megamenu__item"><a href="">Screwdrivers</a></li>
+                                                                <li class="megamenu__item"><a href="">Handsaws</a></li>
+                                                                <li class="megamenu__item"><a href="">Knives</a></li>
+                                                                <li class="megamenu__item"><a href="">Axes</a></li>
+                                                                <li class="megamenu__item"><a href="">Multitools</a></li>
+                                                                <li class="megamenu__item"><a href="">Paint Tools</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="megamenu__item  megamenu__item--with-submenu ">
+                                                            <a href="">Garden Equipment</a>
+                                                            <ul class="megamenu__links megamenu__links--level--1">
+                                                                <li class="megamenu__item"><a href="">Motor Pumps</a></li>
+                                                                <li class="megamenu__item"><a href="">Chainsaws</a></li>
+                                                                <li class="megamenu__item"><a href="">Electric Saws</a></li>
+                                                                <li class="megamenu__item"><a href="">Brush Cutters</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                                 <div class="col-3">
                                                     <ul class="megamenu__links megamenu__links--level--0">
                                                         <li class="megamenu__item  megamenu__item--with-submenu ">
-                                                        
-                                                            <%= link_to item[:title], item[:url] %> 
-                                                            <!--    <ul class="megamenu__links megamenu__links--level--1">
-                                                                <li class="megamenu__item"><a href="">Engravers</a></li>
-                                                                <li class="megamenu__item"><a href="">Drills</a></li>
-                                                                <li class="megamenu__item"><a href="">Wrenches</a></li>
-                                                                <li class="megamenu__item"><a href="">Plumbing</a></li>
-                                                                <li class="megamenu__item"><a href="">Wall Chaser</a></li>
-                                                                <li class="megamenu__item"><a href="">Pneumatic Tools</a></li>
-                                                                <li class="megamenu__item"><a href="">Milling Cutters</a></li>
-                                                            </ul>-->
+                                                            <a href="">Machine Tools</a>
+                                                            <ul class="megamenu__links megamenu__links--level--1">
+                                                                <li class="megamenu__item"><a href="">Thread Cutting</a></li>
+                                                                <li class="megamenu__item"><a href="">Chip Blowers</a></li>
+                                                                <li class="megamenu__item"><a href="">Sharpening Machines</a></li>
+                                                                <li class="megamenu__item"><a href="">Pipe Cutters</a></li>
+                                                                <li class="megamenu__item"><a href="">Slotting machines</a></li>
+                                                                <li class="megamenu__item"><a href="">Lathes</a></li>
+                                                            </ul>
                                                         </li>
-                                                        <!-- <li class="megamenu__item ">
-                                                            <a href="">Workbenches</a>
-                                                        </li>
-                                                        <li class="megamenu__item ">
-                                                            <a href="">Presses</a>
-                                                        </li>
-                                                        <li class="megamenu__item ">
-                                                            <a href="">Spray Guns</a>
-                                                        </li>
-                                                        <li class="megamenu__item ">
-                                                            <a href="">Riveters</a>
-                                                        </li>-->
                                                     </ul>
                                                 </div>
-                                            <% end %>   
-
-                                                <!-- <div class="col-3">
-                                                <ul class="megamenu__links megamenu__links--level--0">
-                                                    <li class="megamenu__item  megamenu__item--with-submenu ">
-                                                        <a href="">Hand Tools</a>
-                                                        <ul class="megamenu__links megamenu__links--level--1">
-                                                            <li class="megamenu__item"><a href="">Screwdrivers</a></li>
-                                                            <li class="megamenu__item"><a href="">Handsaws</a></li>
-                                                            <li class="megamenu__item"><a href="">Knives</a></li>
-                                                            <li class="megamenu__item"><a href="">Axes</a></li>
-                                                            <li class="megamenu__item"><a href="">Multitools</a></li>
-                                                            <li class="megamenu__item"><a href="">Paint Tools</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="megamenu__item  megamenu__item--with-submenu ">
-                                                        <a href="">Garden Equipment</a>
-                                                        <ul class="megamenu__links megamenu__links--level--1">
-                                                            <li class="megamenu__item"><a href="">Motor Pumps</a></li>
-                                                            <li class="megamenu__item"><a href="">Chainsaws</a></li>
-                                                            <li class="megamenu__item"><a href="">Electric Saws</a></li>
-                                                            <li class="megamenu__item"><a href="">Brush Cutters</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
+                                                <div class="col-3">
+                                                    <ul class="megamenu__links megamenu__links--level--0">
+                                                        <li class="megamenu__item  megamenu__item--with-submenu ">
+                                                            <a href="">Instruments</a>
+                                                            <ul class="megamenu__links megamenu__links--level--1">
+                                                                <li class="megamenu__item"><a href="">Welding Equipment</a></li>
+                                                                <li class="megamenu__item"><a href="">Power Tools</a></li>
+                                                                <li class="megamenu__item"><a href="">Hand Tools</a></li>
+                                                                <li class="megamenu__item"><a href="">Measuring Tool</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div> -->
                                             </div>
-                                            <div class="col-3">
-                                                <ul class="megamenu__links megamenu__links--level--0">
-                                                    <li class="megamenu__item  megamenu__item--with-submenu ">
-                                                        <a href="">Machine Tools</a>
-                                                        <ul class="megamenu__links megamenu__links--level--1">
-                                                            <li class="megamenu__item"><a href="">Thread Cutting</a></li>
-                                                            <li class="megamenu__item"><a href="">Chip Blowers</a></li>
-                                                            <li class="megamenu__item"><a href="">Sharpening Machines</a></li>
-                                                            <li class="megamenu__item"><a href="">Pipe Cutters</a></li>
-                                                            <li class="megamenu__item"><a href="">Slotting machines</a></li>
-                                                            <li class="megamenu__item"><a href="">Lathes</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-3">
-                                                <ul class="megamenu__links megamenu__links--level--0">
-                                                    <li class="megamenu__item  megamenu__item--with-submenu ">
-                                                        <a href="">Instruments</a>
-                                                        <ul class="megamenu__links megamenu__links--level--1">
-                                                            <li class="megamenu__item"><a href="">Welding Equipment</a></li>
-                                                            <li class="megamenu__item"><a href="">Power Tools</a></li>
-                                                            <li class="megamenu__item"><a href="">Hand Tools</a></li>
-                                                            <li class="megamenu__item"><a href="">Measuring Tool</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div> -->
                                         </div>
                                     </div>
+                                    <!--  .megamenu / end -->
                                 </div>
-                                <!--  .megamenu / end -->
-                            </div>
-                        <% end %>                                                                          
-                    </li>
+                            <% end %>                                                                          
+                        </li>
                     <% end %>
             </ul>
         </div>

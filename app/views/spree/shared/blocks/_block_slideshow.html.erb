@@ -1,5 +1,5 @@
-<div class="block-slideshow block-slideshow--layout--<%= @_layout %> block">
-    <div class="container">
+<div class="block-slideshow block-slideshow--layout--<%= @_layout %> block" style="margin-top: 0px;">
+    <div class="container-fluis">
         <div class="row">
             <% if @_layout!='full' %>
                 <div class="col-lg-3 d-none d-lg-block"></div>
@@ -7,40 +7,23 @@
             <div class="col-12 <%= @_layout!='full' ? 'col-lg-9' : '' %>">
                 <div class="block-slideshow__body">
                     <div class="owl-carousel">
-                        <a xx class="block-slideshow__slide" href="#">
-                            <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('<%= asset_url('slides/slide-1'+@image_postfix +'.jpg') %>')"></div>
+                    
+                     <% spree_navigation_data[0][:promo_banners].each do |pb| %>   
+                        <a xx class="block-slideshow__slide" href=<%= pb[:url] %>>
+                            <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('<%= pb[:image] %>'); background-size: cover;margin-top: 0px;"></div>
 
-                            <div aa class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url(' <%= asset_url('slides/slide-1-mobile.jpg') %> ')"></div>
+                            <div aa class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url(' <%= pb[:image] %> ')"></div>
                             <div class="block-slideshow__slide-content">
-                                <div class="block-slideshow__slide-title">Big choice of<br>Plumbing products</div>
-                                <div class="block-slideshow__slide-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.</div>
+                                <div class="block-slideshow__slide-title"><%= pb[:title] %></div>
+                                <div class="block-slideshow__slide-text"><%= pb[:subtitle] %></div>
                                 <div class="block-slideshow__slide-button">
                                     <span class="btn btn-primary btn-lg">Shop Now</span>
                                 </div>
                             </div>
                         </a>
-                        <a class="block-slideshow__slide" href="#">
-                            <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('<%= asset_url('slides/slide-2'+@image_postfix +'.jpg') %>')"></div>
-                            <div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url(' <%= asset_url('slides/slide-2-mobile.jpg') %>')"></div>
-                            <div class="block-slideshow__slide-content">
-                                <div class="block-slideshow__slide-title">Screwdrivers<br>Professional Tools</div>
-                                <div class="block-slideshow__slide-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.</div>
-                                <div class="block-slideshow__slide-button">
-                                    <span class="btn btn-primary btn-lg">Shop Now</span>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- <a class="block-slideshow__slide" href=<%= root_path  %>>
-                            <div class="block-slideshow__slide-image block-slideshow__slide-image--desktop" style="background-image: url('<%= asset_url('slides/slide-3'+@image_postfix +'.jpg') %>')"></div>
-                            <div class="block-slideshow__slide-image block-slideshow__slide-image--mobile" style="background-image: url('<%= asset_url('slides/slide-3-mobile.jpg') %>')"></div>
-                            <div class="block-slideshow__slide-content">
-                                <div class="block-slideshow__slide-title">One more<br>Unique header</div>
-                                <div class="block-slideshow__slide-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Etiam pharetra laoreet dui quis molestie.</div>
-                                <div class="block-slideshow__slide-button">
-                                    <span class="btn btn-primary btn-lg">Shop Now</span>
-                                </div>
-                            </div>
-                        </a> -->
+                     <% end %>
+
+
                     </div>
                 </div>
             </div>

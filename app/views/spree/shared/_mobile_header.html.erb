@@ -32,7 +32,7 @@
                             </button>
                         </div>
                         <div class="indicator indicator--mobile d-sm-flex d-none">
-                            <a href="wishlist.html" class="indicator__button">
+                            <a href="wishlist.html" class="indicator__button"  style="display: none;">
                                 <span class="indicator__area">
                                     <svg width="20px" height="20px">
                                         <use xlink:href=<%= asset_url("sprite.svg#heart-20") %> ></use>
@@ -47,7 +47,8 @@
                                     <svg width="20px" height="20px">
                                         <use xlink:href=<%= asset_url("sprite.svg#cart-20") %> ></use>
                                     </svg>
-                                    <span class="indicator__value">3</span>
+                                    <% item_count = simple_current_order&.item_count || 0 %>
+                                    <span class="indicator__value"><%= item_count %></span>
                                 </span>
                             </a>
                         </div>
