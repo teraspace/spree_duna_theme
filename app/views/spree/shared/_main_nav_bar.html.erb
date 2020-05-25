@@ -209,9 +209,7 @@
                                             <% end %>
                                         </li>
                                         <li><%= link_to Spree.t(:cart), spree.cart_path  %></li>
-                                        <%  if try_spree_current_user.bill_address.present? %>
-                                            <li><a href=<%= spree.account_path %> ><%= try_spree_current_user.bill_address.first if try_spree_current_user.bill_address.present? %></a></li>
-                                         <% end %>
+
                                         <li>
                                             <% link_to  spree.edit_user_path(try_spree_current_user) do %>
                                                 <%= inline_svg_tag 'edit.svg', class: "account-page-user-info-item-title-edit-img" %>
