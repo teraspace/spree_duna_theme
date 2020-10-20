@@ -35,7 +35,7 @@
         </div>
         <!-- quickview-modal / end -->
         <!-- mobilemenu -->
-        <%= render partial: 'spree/shared/mobilemenu' %>
+        <%= render partial: 'spree/shared/mobilemenu', locals: { data_navigation: spree_navigation_data, level: 0 } %>
         <!-- mobilemenu / end -->
         <!-- photoswipe -->
         <%= render partial: 'spree/shared/photoswipe' %>
